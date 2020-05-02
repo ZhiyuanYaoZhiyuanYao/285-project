@@ -52,7 +52,7 @@ Input: stockSymbol -> string
 Expected output: -> float if valid symbol, otherwise -1.
 '''
 def getCurrentStockValue(stockSymbol):
-    return "An float number"
+    return 0.00
 
 '''
 Purpose: Obtain specified days history of the overall portfolio value
@@ -73,7 +73,7 @@ Input: portfolio -> list of stocks/ETFs in portfolio
 Expected output: ->float number 
 '''
 def getCurrentPortfolioValue(portfolio):
-    return 0
+    return 0.00
 
 
 '''
