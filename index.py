@@ -59,7 +59,7 @@ Purpose: Obtain the 5 days history of the overall portfolio value
         !!!MAY NEED TO FURTHER SPLIT INTO SUB-FUNCTIONS!!!
 
 Input: stockSymbol -> string
-        days -> integer denoting the backtracking range
+        days -> integer denoting the backtracking range (trading day only, excluding weekneds/holidays)
 Expected output: -> array of length 5
 '''
 def getTrend(stockSymbol, days):
