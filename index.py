@@ -62,7 +62,7 @@ Input: stockSymbol -> string
         days -> integer denoting the backtracking range (trading day only, excluding weekneds/holidays)
 Expected output: -> list of previous days' value
 '''
-def getTrend(stockSymbol, days):
+def getStockTrend(stockSymbol, days):
     return "A list of each of the previous day's value"
 
 
