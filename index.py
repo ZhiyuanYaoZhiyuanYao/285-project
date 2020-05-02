@@ -13,6 +13,12 @@ Step 3: program shows a) how the money is split into each strategy
 '''
 
 '''
+Additional functions: 
+1. user signup/login?
+2. storage of user portfolio?
+'''
+
+'''
 Purpose: Index page 
 
 Needs: 1) input text box for investment amount 
@@ -51,6 +57,7 @@ def getCurrentStockValue(stockSymbol):
 '''
 Purpose: Obtain the 5 days history of the overall portfolio value
         !!!MAY NEED TO FURTHER SPLIT INTO SUB-FUNCTIONS!!!
+
 Input: stockSymbol -> string
         days -> integer denoting the backtracking range
 Expected output: -> array of length 5
@@ -61,6 +68,7 @@ def getTrend(stockSymbol, days):
 
 '''
 Purpose: Calculate the current overall portfolio value
+
 Input: portfolio -> list of stocks/ETFs in portfolio 
         days -> integer denoting the backtracking range
 Expected output: ->float number 
@@ -71,6 +79,7 @@ def getCurrentPortfolioValue(portfolio):
 
 '''
 Purpose: Assemble an array of length 5, each element denoting a previous day's overall portfolio value
+
 Input: portfolio -> list of stocks/ETFs in portfolio 
         days -> integer denoting the backtracking range
 Expected output: -> array of length 5
@@ -80,6 +89,7 @@ def getPortfolioTrend(portfolio, days):
 
 '''
 Purpose: Read the config file containing hard-coded stock choices
+
 Input: Path to configuration file
 Expected output: -> a dictionary with key being stratey name and values being lists of selected stocks/ETFs
 '''
