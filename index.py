@@ -55,22 +55,21 @@ def getCurrentStockValue(stockSymbol):
     return "An float number"
 
 '''
-Purpose: Obtain the 5 days history of the overall portfolio value
+Purpose: Obtain specified days history of the overall portfolio value
         !!!MAY NEED TO FURTHER SPLIT INTO SUB-FUNCTIONS!!!
 
 Input: stockSymbol -> string
         days -> integer denoting the backtracking range (trading day only, excluding weekneds/holidays)
-Expected output: -> array of length 5
+Expected output: -> list of previous days' value
 '''
 def getTrend(stockSymbol, days):
-    return "An array of length 5"
+    return "A list of each of the previous day's value"
 
 
 '''
 Purpose: Calculate the current overall portfolio value
 
 Input: portfolio -> list of stocks/ETFs in portfolio 
-        days -> integer denoting the backtracking range
 Expected output: ->float number 
 '''
 def getCurrentPortfolioValue(portfolio):
@@ -82,10 +81,10 @@ Purpose: Assemble an array of length 5, each element denoting a previous day's o
 
 Input: portfolio -> list of stocks/ETFs in portfolio 
         days -> integer denoting the backtracking range
-Expected output: -> array of length 5
+Expected output: -> list of previous days' value
 '''
 def getPortfolioTrend(portfolio, days):
-    return "A lsit of an array of length 5"
+    return "A list of each of the previous day's value"
 
 '''
 Purpose: Read the config file containing hard-coded stock choices
