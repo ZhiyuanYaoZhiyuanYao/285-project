@@ -89,10 +89,10 @@ def getPortfolioTrend(portfolio, days):
 '''
 Purpose: Read the config file containing hard-coded stock choices
 
-Input: Path to configuration file
+Input: filePath -> string denoting path to configuration file
 Expected output: -> a dictionary with key being stratey name and values being lists of selected stocks/ETFs
 '''
-def readConfigFile():
+def readConfigFile(filePath):
     return "A dictionary of harded coded stocks/ETFs: [strategy name] -> [a list of hard-coded stocks]"
 
 
