@@ -2,6 +2,7 @@ from flask import Flask
 app = Flask(__name__)
 
 '''
+Required execution steps: 
 Step 1: user enters the 'amount of investment' and 'choice(s) of investment strategy / strategies'
 
 Step 2: program assigns appropriate stocks or ETF(s) to each investment strategy. (at 3 stocks or EFT(s) for each strategy) 
@@ -12,7 +13,7 @@ Step 3: program shows a) how the money is split into each strategy
 '''
 
 '''
-Index page 
+Purpose: Index page 
 
 Needs: 1) input text box for investment amount 
         2) selection menu for investment strategy 
@@ -25,10 +26,10 @@ def index():
 
 
 '''
-Information page showing the recommendation results 
+Purpose: Information page showing the recommendation results 
 
-Needs: 1) display of stocks/ETFs corresponding to each strategy
-        2) MAYBE current and last 5 days' overall value of the whole portfolio
+Needs: 1) display of stocks/ETFs corresponding to each strategy ----> What style? What graphs/charts? 
+        2) current and last 5 days' overall value of the whole portfolio ---> Where:On this page or another new page? 
           3) CAN ADD: current value and last 5 days' value of each single stock/ETF
 
 Input:None
@@ -39,7 +40,7 @@ def recommendation():
     return "Some html page(s)"
 
 '''
-obtain the current value (up to second) of a specific stock
+Purpose: Obtain the current value (up to second) of a specific stock
 
 Input: stockSymbol -> string 
 Expected output: -> float if valid symbol, otherwise -1.
@@ -48,7 +49,7 @@ def getCurrentStockValue(stockSymbol):
     return "An float number"
 
 '''
-obtain the 5 days history of the overall portfolio value
+Purpose: Obtain the 5 days history of the overall portfolio value
         !!!MAY NEED TO FURTHER SPLIT INTO SUB-FUNCTIONS!!!
 Input: stockSymbol -> string
         days -> integer denoting the backtracking range
@@ -59,7 +60,7 @@ def getTrend(stockSymbol, days):
 
 
 '''
-Calculate the current overall portfolio value
+Purpose: Calculate the current overall portfolio value
 Input: portfolio -> list of stocks/ETFs in portfolio 
         days -> integer denoting the backtracking range
 Expected output: ->float number 
@@ -69,7 +70,7 @@ def getCurrentPortfolioValue(portfolio):
 
 
 '''
-Assemble an array of length 5, each element denoting a previous day's overall portfolio value
+Purpose: Assemble an array of length 5, each element denoting a previous day's overall portfolio value
 Input: portfolio -> list of stocks/ETFs in portfolio 
         days -> integer denoting the backtracking range
 Expected output: -> array of length 5
@@ -78,7 +79,7 @@ def getPortfolioTrend(portfolio, days):
     return "A lsit of an array of length 5"
 
 '''
-Read the config file containing hard-coded stock choices
+Purpose: Read the config file containing hard-coded stock choices
 Input: Path to configuration file
 Expected output: -> a dictionary with key being stratey name and values being lists of selected stocks/ETFs
 '''
