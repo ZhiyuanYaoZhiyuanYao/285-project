@@ -56,7 +56,7 @@ def getCurrentStockValue(stockSymbol):
 
 '''
 Purpose: Obtain specified days history of the overall portfolio value
-        !!!MAY NEED TO FURTHER SPLIT INTO SUB-FUNCTIONS!!!
+        !!!MAY NEED TO FURTHER BE SPLIT INTO SUB-FUNCTIONS!!!
 
 Input: stockSymbol -> string
         days -> integer denoting the backtracking range (trading day only, excluding weekneds/holidays)
