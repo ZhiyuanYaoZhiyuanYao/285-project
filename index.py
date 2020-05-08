@@ -50,6 +50,8 @@ Purpose: Obtain the current value (up to second) of a specific stock
 
 Input: stockSymbol -> string 
 Expected output: -> float if valid symbol, otherwise -1.
+
+Claimant: Wei He
 '''
 def getCurrentStockValue(stockSymbol):
     return 0.00
