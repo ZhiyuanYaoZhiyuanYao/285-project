@@ -1,3 +1,7 @@
+import requests
+import json
+import os
+import sys
 from flask import Flask
 app = Flask(__name__)
 
@@ -41,7 +45,7 @@ Needs: 1) display of stocks/ETFs corresponding to each strategy ----> What style
 Input:None
 Expected output: A HTML page
 '''
-@app.route('recommendation') 
+@app.route('/recommendation') 
 def recommendation():
     return "Some html page(s)"
 
@@ -53,8 +57,29 @@ Expected output: -> float if valid symbol, otherwise -1.
 
 Claimant: Wei He
 '''
+# @app.route('/getCurrentStockValue') 
+# def getCurrentStockValue(stockSymbol='ADBE'):
 def getCurrentStockValue(stockSymbol):
-    return 0.00
+    url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary"
+
+    querystring = {"region":"US"}
+    querystring["symbol"] = stockSymbol.upper()
+
+    headers = {
+        'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com",
+        'x-rapidapi-key': "10a797419dmsh47591f5e347fa1bp11e285jsn16824a531007"
+        }   
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    if response.text != '':
+        price_info = response.json()['price']
+        CurrentStockValue = 0.0 if price_info['regularMarketPrice'] == {} else float(price_info['regularMarketPrice']['fmt'])
+        
+        return CurrentStockValue
+    else:
+        return -1
+
 
 '''
 Purpose: Obtain specified days history of the overall portfolio value
@@ -73,9 +98,18 @@ Purpose: Calculate the current overall portfolio value
 
 Input: portfolio -> list of stocks/ETFs in portfolio 
 Expected output: ->float number 
+
+Claimant: Wei He
 '''
+# @app.route('/getCurrentPortfolioValue') 
+# def getCurrentPortfolioValue(portfolio = ['VTI', 'IXUS', 'ILTB', 'APPL', 'ADBE', 'NSRGY']):
 def getCurrentPortfolioValue(portfolio):
-    return 0.00
+    currentPortfolioValue = 0.0
+    for stk_sym in portfolio:
+        currentPortfolioValue += getCurrentStockValue(stk_sym)
+
+    # return str(currentPortfolioValue)
+    return currentPortfolioValue
 
 
 '''
@@ -93,9 +127,20 @@ Purpose: Read the config file containing hard-coded stock choices
 
 Input: filePath -> string denoting path to configuration file
 Expected output: -> a dictionary with key being stratey name and values being lists of selected stocks/ETFs
+
+Claimant: Wei He
 '''
-def readConfigFile(filePath):
-    return "A dictionary of harded coded stocks/ETFs: [strategy name] -> [a list of hard-coded stocks]"
+# @app.route('/readConfigFile') 
+def readConfigFile():
+    dict_stratege_stock = {}
+    with open(os.path.join(sys.path[0], "stock_engine.txt"), "r") as f:
+        for i in range(5): 
+            key_strategy = f.readline()[:-1]
+            value_stocks = []
+            for j in range(5):
+                value_stocks.append(f.readline()[:-1])
+            dict_stratege_stock[key_strategy]= value_stocks
+    return dict_stratege_stock
 
 
 if __name__ == '__main__':
